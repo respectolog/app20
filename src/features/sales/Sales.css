@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Scada&display=swap');
+
+.green-text{
+  color: green;
+  padding-left: 5px;
+}
+.red-text{
+  color: red;
+  padding-left: 5px;
+}
+.sales-table{
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+.sales-table td{
+  padding: 7px 0;
+  border: 1px solid grey;
+  font-family: 'Scada', sans-serif;
+}
+
+.sales-table tr:hover{
+  transition: 0.5s;
+  background-color: #b0e2ff;
+}
+
+.sales-table tr:active{
+  transition: 1s;
+  background-color: red;
+}
+.top{
+  height: 6vmin;
+  background-color: #d0ffda;
+  text-align: right;
+  border: 1px solid black;
+  position: relative;
+}
+.top p{
+  float: left;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: 'Scada', sans-serif;
+}
+.top button{
+  padding: 7px 9px;
+  font-size: 20px;
+  background-color: #d0ffda;
+  cursor: pointer;
+  border: none;
+}
+.close{
+  display: none;
+}
+.open{
+  display: block;
+}
+.options{
+  position: absolute;
+  right: 0;
+  background-color: white;
+  padding: 10px 20px;
+  border: 1px solid grey;
+  box-shadow: 0 0 15px rgb(34 106 4 / 68%);
+}
+.options label{
+  display: block;
+  text-align: left;
+}
+input[type="checkbox"] {
+  float: right;
+}
+.table-legend{
+  background-color: green;
+}
+.recharts-responsive-container{
+  border:  1px solid black;
+  border-bottom: none;
+  width: 99.8% !important;
+}
