@@ -13,7 +13,6 @@ import {
 
 function App() {
   const data = useSelector(selectDataMassive);
-  const grafWidth = 'auto';
 
   return (
     <div className="App">
