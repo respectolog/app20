@@ -19,7 +19,9 @@
   border: 1px solid grey;
   font-family: 'Scada', sans-serif;
 }
-
+.sales-table tr {
+  cursor: pointer;
+}
 .sales-table tr:hover{
   transition: 0.5s;
   background-color: #b0e2ff;
@@ -92,7 +94,4 @@ input[type="checkbox"] {
   .recharts-responsive-container{
     width: auto !important;
   }
-}
-@media (max-width: 768px) {
-
 }
