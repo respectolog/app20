@@ -30,7 +30,7 @@
   background-color: red;
 }
 .top{
-  height: 6vmin;
+  height: 40px;
   background-color: #d0ffda;
   text-align: right;
   border: 1px solid black;
@@ -46,7 +46,7 @@
 .top button{
   padding: 7px 9px;
   font-size: 20px;
-  background-color: #d0ffda;
+  background-color: transparent;
   cursor: pointer;
   border: none;
 }
@@ -77,5 +77,22 @@ input[type="checkbox"] {
 .recharts-responsive-container{
   border:  1px solid black;
   border-bottom: none;
-  width: 99.8% !important;
+  width: auto !important;
+}
+.green-back{
+  background-color: #baffba;
+}
+.red-back{
+  background-color: #ffb1b1;
+}
+@media (max-width: 768px) {
+  .sales-table{
+    font-size: 14px;
+  }
+  .recharts-responsive-container{
+    width: auto !important;
+  }
+}
+@media (max-width: 768px) {
+
 }

@@ -25,6 +25,10 @@ export function Salestable() {
       sredguest: ((item.nal+item.beznal+item.kreditki)/item.gostey).toFixed(),
     };
   });
+var date = new Date(sales[14].date);
+var date2 = new Date(sales[7].date);
+  console.log(sales[14].date);
+  console.log((date - date2)/(1000 * 3600 * 24));
   const dispatch = useDispatch();
 
   const [rowVisible, setVisible] = useState({
@@ -197,8 +201,8 @@ export function Salestable() {
           >
             <td>Выручка</td>
             <td>{sales[sales.length - 1].viruchka}</td>
-            <td>{sales[sales.length - 2].viruchka}<Procent day1 = {sales[sales.length - 1].viruchka} day2={sales[sales.length - 2].viruchka}/></td>
-            <td>{sales[sales.length - 8].viruchka}<Procent day1 = {sales[sales.length - 1].viruchka} day2={sales[sales.length - 8].viruchka}/></td>
+            <Procent day1 = {sales[sales.length - 1].viruchka} day2={sales[sales.length - 2].viruchka}/>
+            <Procent day1 = {sales[sales.length - 1].viruchka} day2={sales[sales.length - 8].viruchka}/>
           </tr>
           <tr
             id="nal"
@@ -207,8 +211,8 @@ export function Salestable() {
           >
             <td>Нал</td>
             <td>{sales[sales.length - 1].nal}</td>
-            <td>{sales[sales.length - 2].nal}<Procent day1 = {sales[sales.length - 1].nal} day2={sales[sales.length - 2].nal}/></td>
-            <td>{sales[sales.length - 8].nal}<Procent day1 = {sales[sales.length - 1].nal} day2={sales[sales.length - 8].nal}/></td>
+            <Procent day1 = {sales[sales.length - 1].nal} day2={sales[sales.length - 2].nal}/>
+            <Procent day1 = {sales[sales.length - 1].nal} day2={sales[sales.length - 8].nal}/>
           </tr>
           <tr
             id="beznal"
@@ -217,8 +221,8 @@ export function Salestable() {
           >
             <td>Безнал</td>
             <td>{sales[sales.length - 1].beznal}</td>
-            <td>{sales[sales.length - 2].beznal}<Procent day1 = {sales[sales.length - 1].beznal} day2={sales[sales.length - 2].beznal}/></td>
-            <td>{sales[sales.length - 8].beznal}<Procent day1 = {sales[sales.length - 1].beznal} day2={sales[sales.length - 8].beznal}/></td>
+            <Procent day1 = {sales[sales.length - 1].beznal} day2={sales[sales.length - 2].beznal}/>
+            <Procent day1 = {sales[sales.length - 1].beznal} day2={sales[sales.length - 8].beznal}/>
           </tr>
           <tr
             id="kreditki"
@@ -227,8 +231,8 @@ export function Salestable() {
           >
             <td>Кредитки</td>
             <td>{sales[sales.length - 1].kreditki}</td>
-            <td>{sales[sales.length - 2].kreditki}<Procent day1 = {sales[sales.length - 1].kreditki} day2={sales[sales.length - 2].kreditki}/></td>
-            <td>{sales[sales.length - 8].kreditki}<Procent day1 = {sales[sales.length - 1].kreditki} day2={sales[sales.length - 8].kreditki}/></td>
+            <Procent day1 = {sales[sales.length - 1].kreditki} day2={sales[sales.length - 2].kreditki}/>
+            <Procent day1 = {sales[sales.length - 1].kreditki} day2={sales[sales.length - 8].kreditki}/>
           </tr>
           <tr
             id="sredcheck"
@@ -237,8 +241,8 @@ export function Salestable() {
           >
             <td>Средний чек</td>
             <td>{sales[sales.length - 1].sredcheck}</td>
-            <td>{sales[sales.length - 2].sredcheck}<Procent day1 = {sales[sales.length - 1].sredcheck} day2={sales[sales.length - 2].sredcheck}/></td>
-            <td>{sales[sales.length - 8].sredcheck}<Procent day1 = {sales[sales.length - 1].sredcheck} day2={sales[sales.length - 8].sredcheck}/></td>
+            <Procent day1 = {sales[sales.length - 1].sredcheck} day2={sales[sales.length - 2].sredcheck}/>
+            <Procent day1 = {sales[sales.length - 1].sredcheck} day2={sales[sales.length - 8].sredcheck}/>
           </tr>
           <tr
             id="sredguest"
@@ -247,8 +251,8 @@ export function Salestable() {
           >
             <td>Средний гость</td>
             <td>{sales[sales.length - 1].sredguest}</td>
-            <td>{sales[sales.length - 2].sredguest}<Procent day1 = {sales[sales.length - 1].sredguest} day2={sales[sales.length - 2].sredguest}/></td>
-            <td>{sales[sales.length - 8].sredguest}<Procent day1 = {sales[sales.length - 1].sredguest} day2={sales[sales.length - 8].sredguest}/></td>
+            <Procent day1 = {sales[sales.length - 1].sredguest} day2={sales[sales.length - 2].sredguest}/>
+            <Procent day1 = {sales[sales.length - 1].sredguest} day2={sales[sales.length - 8].sredguest}/>
           </tr>
           <tr
             id="udalposle"
@@ -257,8 +261,8 @@ export function Salestable() {
           >
             <td>Удаление после</td>
             <td>{sales[sales.length - 1].udalposle}</td>
-            <td>{sales[sales.length - 2].udalposle}<Procent day1 = {sales[sales.length - 1].udalposle} day2={sales[sales.length - 2].udalposle}/></td>
-            <td>{sales[sales.length - 8].udalposle}<Procent day1 = {sales[sales.length - 1].udalposle} day2={sales[sales.length - 8].udalposle}/></td>
+            <Procent day1 = {sales[sales.length - 1].udalposle} day2={sales[sales.length - 2].udalposle}/>
+            <Procent day1 = {sales[sales.length - 1].udalposle} day2={sales[sales.length - 8].udalposle}/>
           </tr>
           <tr
             id="udaldo"
@@ -267,8 +271,8 @@ export function Salestable() {
           >
             <td>Удаление до</td>
             <td>{sales[sales.length - 1].udaldo}</td>
-            <td>{sales[sales.length - 2].udaldo}<Procent day1 = {sales[sales.length - 1].udaldo} day2={sales[sales.length - 2].udaldo}/></td>
-            <td>{sales[sales.length - 8].udaldo}<Procent day1 = {sales[sales.length - 1].udaldo} day2={sales[sales.length - 8].udaldo}/></td>
+            <Procent day1 = {sales[sales.length - 1].udaldo} day2={sales[sales.length - 2].udaldo}/>
+            <Procent day1 = {sales[sales.length - 1].udaldo} day2={sales[sales.length - 8].udaldo}/>
           </tr>
           <tr
             id="chekov"
@@ -277,8 +281,8 @@ export function Salestable() {
           >
             <td>Чеков</td>
             <td>{sales[sales.length - 1].chekov}</td>
-            <td>{sales[sales.length - 2].chekov}<Procent day1 = {sales[sales.length - 1].chekov} day2={sales[sales.length - 2].chekov}/></td>
-            <td>{sales[sales.length - 8].chekov}<Procent day1 = {sales[sales.length - 1].chekov} day2={sales[sales.length - 8].chekov}/></td>
+            <Procent day1 = {sales[sales.length - 1].chekov} day2={sales[sales.length - 2].chekov}/>
+            <Procent day1 = {sales[sales.length - 1].chekov} day2={sales[sales.length - 8].chekov}/>
           </tr>
           <tr
             id="gostey"
@@ -287,8 +291,8 @@ export function Salestable() {
           >
             <td>Гостей</td>
             <td>{sales[sales.length - 1].gostey}</td>
-            <td>{sales[sales.length - 2].gostey}<Procent day1 = {sales[sales.length - 1].gostey} day2={sales[sales.length - 2].gostey}/></td>
-            <td>{sales[sales.length - 8].gostey}<Procent day1 = {sales[sales.length - 1].gostey} day2={sales[sales.length - 8].gostey}/></td>
+            <Procent day1 = {sales[sales.length - 1].gostey} day2={sales[sales.length - 2].gostey}/>
+            <Procent day1 = {sales[sales.length - 1].gostey} day2={sales[sales.length - 8].gostey}/>
           </tr>
         </tbody>
       </table>

@@ -35,18 +35,21 @@ export function Procent(props){
   let x = props.day1;
   let y = props.day2;
   let z = 0;
+  let back = "";
   if(x > y){
     z = (x - y)/y * 100;
+    if(z > 5){back = "green-back";}
     return(
-      <span className="green-text">+{z.toFixed(2)}%</span>
+      <td className={back}>{y}<span className="green-text">+{z.toFixed(2)}%</span></td>
     );
   }
   else if (x < y) {
     z = (x - y)/ y * 100;
+      if(z < -5){back = "red-back";}
     return(
-      <span className="red-text">{z.toFixed(2)}%</span>
+      <td className={back}>{y}<span className="red-text">{z.toFixed(2)}%</span></td>
     );
   }else{
-    return "";
+    return (<td>{y}</td>);
   }
 }
