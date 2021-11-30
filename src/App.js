@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import { Salestable } from './features/sales/Sales.js';
 import './App.css';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
@@ -10,9 +9,9 @@ import {
 
 
 
-
 function App() {
   const data = useSelector(selectDataMassive);
+
 
   return (
     <div className="App">

@@ -4,62 +4,46 @@ import data from "./data.json";
 const datasales = data.days;
 
 var newmassiv = datasales.map(function (item) {
-  return {
-    date: item.date,
-    viruchka: item.nal+item.beznal+item.kreditki,
-    nal: item.nal,
-    beznal: item.beznal,
-    kreditki: item.kreditki,
-    udaldo: item.udaldo,
-    udalposle: item.udalposle,
-    gostey: item.gostey,
-    chekov: item.chekov,
-    sredcheck: ((item.nal+item.beznal+item.kreditki)/item.chekov).toFixed(2),
-    sredguest: ((item.nal+item.beznal+item.kreditki)/item.gostey).toFixed(2),
-  };
+  return [
+    {id: "date", name:"Дата", value: item.date},
+    {id: "viruchka", name: "Выручка", value: item.nal+item.beznal+item.kreditki},
+    {id: "nal", name: "Нал", value: item.nal},
+    {id: "beznal", name:"Безнал", value: item.beznal},
+    {id: "kreditki", name: "Кредитки", value: item.kreditki},
+    {id: "udaldo", name:"Удалено из чека до оплаты", value: item.udaldo},
+    {id: "udalposle", name:"Удалено из чека после оплаты", value: item.udalposle},
+    {id: "gostey", name:"Гостей", value: item.gostey},
+    {id: "chekov", name:"Чеков", value: item.chekov},
+    {id: "sredcheck", name:"Средний чек", value: ((item.nal+item.beznal+item.kreditki)/item.chekov).toFixed()},
+    {id: "sredguest", name: "Средний гость", value:((item.nal+item.beznal+item.kreditki)/item.gostey).toFixed()},
+  ];
 });
-
+//
 const initialState = {
   list: [],
+  sales: newmassiv,
 };
 
-
+// состаяние графика оставил отдельным редюсером но думаю можно один сделать для всего и для данных и для графика и для видимости строк
 
 
 export const graficSlice = createSlice({
   name: "grafic",
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
+
   reducers: {
     changeData: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.list = newmassiv.map(function (item) {
-        if( action.payload === "beznal"){
-          return {date: item.date, value: item.beznal };
-        }else if (action.payload === "nal") {
-          return {date: item.date, value: item.nal };
-        }else if (action.payload === "kreditki") {
-          return {date: item.date, value: item.kreditki };
-        }else if (action.payload === "udaldo") {
-          return {date: item.date, value: item.udaldo };
-        }else if (action.payload === "udalposle") {
-          return {date: item.date, value: item.udalposle };
-        }else if (action.payload === "gostey") {
-          return {date: item.date, value: item.gostey };
-        }else if (action.payload === "chekov") {
-          return {date: item.date, value: item.chekov };
-        }else if (action.payload === "sredcheck") {
-          return {date: item.date, value: item.sredcheck };
-        }else if (action.payload === "sredguest") {
-          return {date: item.date, value: item.sredguest };
-        }else if (action.payload === "viruchka") {
-          return {date: item.date, value: item.viruchka };
+      state.list = state.sales.map(function (item) {
+        for(let key of item){ // тут тоже for-ы мне не сильно нравятся но синтаксис забыл :(
+          if(key.id === "date"){
+            var date = key.value;
+          }
+          if(key.id === action.payload){
+            var val = key.value;
+          }
         }
+        return {date: date, value: val };
       });
-
     },
 
     // Use the PayloadAction type to declare the contents of `action.payload`
