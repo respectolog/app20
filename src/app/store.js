@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import graficReducer from '../features/sales/graficSlice';
-import labelsReducer from '../features/sales/labelsSlice';
+import appReducer from '../features/sales/mainAppSlice';
 
 export const store = configureStore({
   reducer: {
-    grafic: graficReducer,
-    viz: labelsReducer,
+    appSlice: appReducer,
   },
 });

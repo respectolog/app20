@@ -1,14 +1,27 @@
 import React, { useState } from "react";
-import { Labels, Rows } from "./sales_func";
+import { Labels } from "./labelsFunc";
+import { Rows } from "./rowsFunc";
 import "./Sales.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { selectDaysMassive } from "./mainAppSlice";
+import { useSelector } from "react-redux";
 
 export function Salestable() {
+  let days = useSelector(selectDaysMassive);
+  days = days.map((item) => {
+    return item["date"].value;
+  });
 
-  //перенёс отмеченные строки в стейт редукса
-  //rowVisible вообще оказался не нужен
   const [optionsViz, setViz] = useState(false);
+  const [selectDate, setNewDate] = useState({
+    checked: "2021-11-9",
+    avalibleDates: days,
+  });
+
+  function handleChange(event) {
+    setNewDate({ checked: event.target.value, avalibleDates: days });
+  }
 
   return (
     <div>
@@ -20,7 +33,8 @@ export function Salestable() {
         </button>
         <div className={optionsViz === true ? "options open" : "options close"}>
           <div id="menu-head">Отображаемые строки</div>
-            <Labels/>{/* функция выводит список отмеченных строк*/}
+          <Labels />
+          {/* функция выводит список отмеченных строк*/}
         </div>
       </div>
 
@@ -30,9 +44,20 @@ export function Salestable() {
             <td>Показатель</td>
             <td>Сегодня</td>
             <td>Вчера</td>
-            <td>Неделю назад</td>
+            <td>
+              <select value={selectDate.checked} onChange={handleChange}>
+                {selectDate.avalibleDates.map((item) => {
+                  return (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
+              </select>
+            </td>
           </tr>
-          <Rows/>{/* функция выводящая строки при условии что они отмечены */}
+          <Rows today="2021-11-16" selectDay={selectDate.checked} />
+          {/* функция выводящая строки при условии что они отмечены */}
         </tbody>
       </table>
     </div>

@@ -109,6 +109,18 @@
   font-weight: bold;
   padding-bottom: 15px;
 }
+.table-legend td select{
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  border: none;
+  background-color: green;
+  font-family: "Scada", sans-serif;
+  font-size: 18px;
+}
+.table-legend td select option{
+  background-color: white;
+}
 
 @media (max-width: 768px) {
   .sales-table {
