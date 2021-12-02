@@ -12,8 +12,8 @@ export function Rows(props) {
   const today = props.today;
   const selectedDay = props.selectDay;
   const dayDate = new Date(today);
-  const getYesterday = new Date(dayDate.setDate(dayDate.getDate() - 1)); // тут надо будет переделать
-  const getSelectedDay = new Date(selectedDay); // когда сделаю выбор даты
+  const getYesterday = new Date(dayDate.setDate(dayDate.getDate() - 1));
+  const getSelectedDay = new Date(selectedDay);
   let anotherDay = [
     getSelectedDay.getFullYear(),
     getSelectedDay.getMonth() + 1,
@@ -29,19 +29,19 @@ export function Rows(props) {
   const dispatch = useDispatch();
 
   for (let dataDay of daysMassive) {
-    //использую for-ы потому что забыл синтаксис который ты мне показывала :(
     if (dataDay["date"].value === today) {
       var column1 = dataDay;
-    } else if (dataDay["date"].value === yesterday) {
+    }
+     if (dataDay["date"].value === yesterday) {
       var column2 = dataDay;
-    } else if (dataDay["date"].value === anotherDay) {
+    }
+    if (dataDay["date"].value === anotherDay) {
       var column3 = dataDay;
     }
   }
 
   var rows = Object.keys(column1).map((item) => {
     if (item !== "date" && rowChecked[item].value === true) {
-      //рендеринг конечно условный но мне кажется не сильно красиво получилось
       return (
         <tr
           key={item}
