@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import data from "./data.json";
+import data from "../data/data.json";
 
 const datasales = data.days;
 
@@ -53,15 +53,17 @@ export const appSlice = createSlice({
     changeGrafData: (state, action) => {
       let name = action.payload;
       state.graf = state.days.map(function (item) {
-
         return {date: item['date'].value, value: item[name].value };
       });
+    },
+    addDay: (state, action) => {
+      state.days.push(action.payload);
     },
 
   },
 });
 
-export const { changeVisibility, changeGrafData } = appSlice.actions;
+export const { changeVisibility, changeGrafData, addDay } = appSlice.actions;
 
 export const selectVisMassive = (state) => state.appSlice.visibility;
 export const selectDaysMassive = (state) => state.appSlice.days;

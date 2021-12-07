@@ -1,26 +1,37 @@
-import React, { useState } from "react";
-import { Labels } from "./labelsFunc";
-import { Rows } from "./rowsFunc";
+import React, { useState, useEffect  } from "react";
+import { Label } from "../rows/Label";
+import { Rows } from "../rows/Rows";
 import "./Sales.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { selectDaysMassive } from "./mainAppSlice";
+import { selectDaysMassive, selectVisMassive } from "../../utils/mainAppSlice";
 import { useSelector } from "react-redux";
 
 export function Salestable() {
-  let days = useSelector(selectDaysMassive);
-  days = days.map((item) => {
-    return item["date"].value;
-  });
+  const days = useSelector(selectDaysMassive);
+
+  const rowChecked = useSelector(selectVisMassive);
 
   const [optionsViz, setViz] = useState(false);
   const [selectDate, setNewDate] = useState({
     checked: "2021-11-9",
-    avalibleDates: days,
+    avalibleDates: days.map((item) => {
+      return item["date"].value;
+    }),
   });
+  useEffect(() => {
+      let add_day = days.map((item) => {
+        return item["date"].value;
+      });
+      setNewDate((prevState) => ({
+        ...prevState,
+        avalibleDates: add_day,
+      }));
+
+  },[days]);
 
   function handleChange(event) {
-    setNewDate({ checked: event.target.value, avalibleDates: days });
+    setNewDate({ ...selectDate, checked: event.target.value});
   }
 
   return (
@@ -33,7 +44,9 @@ export function Salestable() {
         </button>
         <div className={optionsViz === true ? "options open" : "options close"}>
           <div id="menu-head">Отображаемые строки</div>
-          <Labels />
+          {Object.keys(rowChecked).map((item) => {
+            return <Label key={rowChecked[item].id} item={rowChecked[item]} />;
+          })}
           {/* функция выводит список отмеченных строк*/}
         </div>
       </div>
@@ -56,7 +69,7 @@ export function Salestable() {
               </select>
             </td>
           </tr>
-          <Rows today="2021-11-16" selectDay={selectDate.checked} />
+          <Rows today="2021-11-16" selected_day={selectDate.checked} />
           {/* функция выводящая строки при условии что они отмечены */}
         </tbody>
       </table>

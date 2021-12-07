@@ -1,5 +1,6 @@
 import React from "react";
-import { Salestable } from "./features/sales/Sales.js";
+import { Salestable } from "./components/sales/Salestable.js";
+import { ModalForm } from "./components/modalform/ModalForm.js";
 import "./App.css";
 import {
   LineChart,
@@ -11,7 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useSelector } from "react-redux";
-import { selectGrafMassive } from "./features/sales/mainAppSlice";
+import { selectGrafMassive } from "./utils/mainAppSlice";
 
 function App() {
   const data = useSelector(selectGrafMassive);
@@ -40,6 +41,7 @@ function App() {
           </LineChart>
         </ResponsiveContainer>
         <Salestable />
+        <ModalForm />
       </div>
     </div>
   );
