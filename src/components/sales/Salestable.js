@@ -38,7 +38,7 @@ export function Salestable() {
     <div>
       <div className="top">
         <p>Общая статистика</p>
-        <button onClick={() => setViz(optionsViz === false ? true : false)}>
+        <button onClick={() => setViz(!optionsViz)}>
           {" "}
           <FontAwesomeIcon icon={faCog} />{" "}
         </button>

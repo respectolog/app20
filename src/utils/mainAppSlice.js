@@ -22,7 +22,7 @@ var daysMassive = datasales.map(function (item) {
 
 
 // отмеченные строки тоже также
-var rowChecked = {
+let rowChecked = {
   viruchka: {id: "viruchka", name:"Выручка", value: true},
   nal: {id: "nal", name:"Нал", value: true},
   beznal: {id: "beznal", name:"Безнал", value: true},

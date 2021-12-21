@@ -21,9 +21,9 @@ export function Rows(props) {
 
   useEffect(() => {
     function Changeday(){
-      const day_date = new Date(today);
-      const get_yesterday = new Date(day_date.setDate(day_date.getDate() - 1));
-      const get_selected_day = new Date(selected_day);
+      let day_date = new Date(today);
+      let get_yesterday = new Date(day_date.setDate(day_date.getDate() - 1));
+      let get_selected_day = new Date(selected_day);
       let another_day = ([
         get_selected_day.getFullYear(),
         get_selected_day.getMonth() + 1,
@@ -37,16 +37,25 @@ export function Rows(props) {
 
       for (let dataday of days_massive) {
         if (dataday["date"].value === today) {
-          var column1 = dataday;
+          setColumns((prevState) => ({
+            ...prevState,
+            column1: dataday,
+          }));
         }
          if (dataday["date"].value === yesterday) {
-          var column2 = dataday;
+           setColumns((prevState) => ({
+             ...prevState,
+             column2: dataday,
+           }));
         }
         if (dataday["date"].value === another_day) {
-          var column3 = dataday;
+          setColumns((prevState) => ({
+            ...prevState,
+            column3: dataday,
+          }));
         }
       }
-      setColumns({column1: column1, column2: column2, column3: column3});
+
     };
     Changeday();
   },[today, selected_day, days_massive]);
@@ -75,10 +84,8 @@ export function Rows(props) {
 function Procents(props) {
   //заменил старую функцию процентов и сделал её не экспортной потому что она отсюда же вызывается
   let { today_value, day, id} = props;
-
   let proc = 0;
   let back = "";
-
   let sec_value = day[id].value;
   if (today_value > sec_value) {
     proc = ((today_value - sec_value) / sec_value) * 100;
