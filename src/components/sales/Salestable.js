@@ -16,12 +16,12 @@ export function Salestable() {
   const [selectDate, setNewDate] = useState({
     checked: "2021-11-9",
     avalibleDates: days.map((item) => {
-      return item["date"].value;
+      return item.date;
     }),
   });
   useEffect(() => {
       let add_day = days.map((item) => {
-        return item["date"].value;
+        return item.date;
       });
       setNewDate((prevState) => ({
         ...prevState,
@@ -42,10 +42,10 @@ export function Salestable() {
           {" "}
           <FontAwesomeIcon icon={faCog} />{" "}
         </button>
-        <div className={optionsViz === true ? "options open" : "options close"}>
+        <div className={optionsViz ? "options open" : "options close"}>
           <div id="menu-head">Отображаемые строки</div>
           {Object.keys(rowChecked).map((item) => {
-            return <Label key={rowChecked[item].id} item={rowChecked[item]} />;
+            return <Label key={item} item={rowChecked[item]} itemname={item}/>;
           })}
           {/* функция выводит список отмеченных строк*/}
         </div>
